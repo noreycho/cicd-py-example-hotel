@@ -11,6 +11,7 @@ class TestHootel(object):
         URL = 'http://hotel-v3.progmasters.hu/'
         options = Options()
         options.add_experimental_option("detach", True)
+        options.add_argument("--headless")
         self.browser = webdriver.Chrome(options=options)
         self.browser.get(URL)
 
@@ -21,6 +22,7 @@ class TestHootel(object):
     @allure.description("A belépés tesztelése")
     @allure.severity(allure.severity_level.TRIVIAL)
     @allure.tag("login")
+
     def test_login(self):
         login_btn = self.browser.find_element(By.XPATH, '//a[@class="nav-link"]')
         login_btn.click()
